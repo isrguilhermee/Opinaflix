@@ -1,0 +1,159 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+}
+
+.modal {
+  background: #111;
+  border-radius: 15px;
+  border: 1px solid #333;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(229, 9, 20, 0.3);
+}
+
+.modal.small {
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal.medium {
+  width: 90%;
+  max-width: 600px;
+}
+
+.modal.large {
+  width: 90%;
+  max-width: 900px;
+}
+
+.header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e50914, #ff6b6b);
+}
+
+.title {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: #e50914;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.content {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  color: white;
+}
+
+/* Scrollbar personalizada */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #b8070f;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal.small,
+  .modal.medium,
+  .modal.large {
+    width: 95%;
+    max-width: none;
+  }
+  
+  .header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    height: 95vh;
+  }
+  
+  .header {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+} 

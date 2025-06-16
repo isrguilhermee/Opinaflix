@@ -1,0 +1,455 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.container h1 {
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.container h2 {
+  color: #fff;
+  margin: 2rem 0 1rem;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #e50914;
+  padding-bottom: 0.5rem;
+}
+
+.searchSection {
+  margin-bottom: 3rem;
+}
+
+.searchForm {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.searchForm input {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.searchForm button {
+  padding: 1rem 2rem;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchForm button:hover {
+  background-color: #f40612;
+}
+
+.searchForm button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.searchResults {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.movieCard {
+  background-color: #141414;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.movieCard:hover {
+  transform: scale(1.05);
+  background: rgba(20, 20, 20, 0.7);
+}
+
+.movieCard img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movieInfo {
+  padding: 1rem;
+}
+
+.movieCard h3 {
+  color: white;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.movieCard p {
+  color: #ccc;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Estilos dos botões hover */
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.movieCard:hover .cardOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cardButton {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  width: 75%;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cardButton:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s ease;
+}
+
+.cardButton:hover {
+  background-color: #f40612;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.cardButton:hover:before {
+  left: 100%;
+}
+
+.cardButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo alternativo para o segundo botão */
+.cardButton:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+}
+
+.cardButton:nth-child(2):hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.movieDetails {
+  color: white;
+  margin-top: 2rem;
+}
+
+.movieHeader {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.movieHeader img {
+  border-radius: 8px;
+}
+
+.movieHeader div {
+  flex: 1;
+}
+
+.movieHeader h2 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+}
+
+.movieHeader p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.ratingValue {
+  color: #e50914;
+  font-weight: bold;
+}
+
+.movieActions {
+  margin-top: 1rem;
+}
+
+.evaluateButton {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.evaluateButton:hover {
+  background-color: #f40612;
+  transform: translateY(-2px);
+}
+
+.reviewsHeader {
+  margin: 2rem 0 1rem 0;
+}
+
+.reviewsHeader h3 {
+  color: white;
+  margin: 0;
+}
+
+.moreReviews {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.viewAllButton {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewAllButton:hover {
+  background-color: #444;
+  border-color: #e50914;
+}
+
+/* Estilos da Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #1e1e1e;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalHeader h3 {
+  color: #e5e5e5;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #e5e5e5;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.reviewForm {
+  padding: 2rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  color: #e5e5e5;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.ratingInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #333;
+  background: #2a2a2a;
+  color: #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.ratingInput:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.contentTextarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #333;
+  background: #2a2a2a;
+  color: #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.contentTextarea:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  background: transparent;
+  border: 1px solid #555;
+  color: #e5e5e5;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.submitButton {
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #f40612;
+}
+
+.noResults {
+  text-align: center;
+  color: white;
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
+.noResults h2 {
+  color: #e50914;
+  margin-bottom: 1rem;
+}
+
+.noResults p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .movieHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .movieHeader img {
+    width: 180px;
+    height: 270px;
+  }
+
+  .searchResults {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .movieCard img {
+    height: 300px;
+  }
+} 
