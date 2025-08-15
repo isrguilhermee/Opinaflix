@@ -1,0 +1,77 @@
+.container {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo a {
+  color: #e50914;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.navLinks a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLinks a:hover {
+  color: #e50914;
+}
+
+.navLinks .active {
+  color: #e50914;
+  font-weight: bold;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.authButtons a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.authButtons a:first-child {
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+.authButtons a:last-child {
+  background-color: #e50914;
+}
+
+.authButtons a:hover {
+  background-color: rgba(229, 9, 20, 0.8);
+}
+
+.main {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+} 

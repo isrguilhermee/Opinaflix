@@ -1,0 +1,253 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+}
+
+.navbar {
+  background-color: #111;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.navbarContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  flex: 0 0 auto;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Para usuários normais (sem admin): centraliza "Início" e "Buscar" */
+.navLinks.noAdmin {
+  gap: 3rem;
+}
+
+/* Para admins: mantém "Buscar" no centro com os outros ao lado */
+.navLinks:not(.noAdmin) {
+  gap: 2rem;
+}
+
+.authButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profileLink {
+  text-decoration: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.profileLink:hover {
+  background-color: #333;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profileImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e50914;
+}
+
+.username {
+  color: #fff;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.adminBadge {
+  background: linear-gradient(135deg, #e50914, #ff4757);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(229, 9, 20, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.signOutButton {
+  background-color: transparent;
+  border: 1px solid #e50914;
+  color: #e50914;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.signOutButton:hover {
+  background-color: #e50914;
+  color: #fff;
+}
+
+.navLinks a,
+.authButtons a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.navLinks a:hover,
+.authButtons a:hover {
+  background-color: #333;
+}
+
+.navLinks a.active,
+.authButtons a.active {
+  background-color: #333;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.menuIcon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.menuIcon::before {
+  top: -8px;
+}
+
+.menuIcon::after {
+  bottom: -8px;
+}
+
+.mainContent {
+  margin-top: 80px;
+  padding: 0;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+}
+
+.mainContent h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navLinks {
+    gap: 1.5rem;
+  }
+  
+  .navLinks.noAdmin {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: block;
+  }
+
+  .navLinks,
+  .authButtons {
+    display: none;
+    position: static;
+    transform: none;
+    left: auto;
+    top: 100%;
+    right: 0;
+    background-color: #111;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid #333;
+  }
+
+  .navLinks.active,
+  .authButtons.active {
+    display: flex;
+  }
+
+  .navLinks a,
+  .authButtons a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profileInfo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .signOutButton {
+    width: 100%;
+    text-align: center;
+  }
+} 

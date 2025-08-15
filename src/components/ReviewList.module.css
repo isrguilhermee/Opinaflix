@@ -1,0 +1,585 @@
+.reviewsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.reviewCard {
+  background: linear-gradient(145deg, #1e1e1e, #242424);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reviewCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: rgba(229, 9, 20, 0.3);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rating {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e50914;
+  background: rgba(229, 9, 20, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rating::after {
+  content: '★';
+  color: #e50914;
+  font-size: 1rem;
+}
+
+.date {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.reviewActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editButton,
+.deleteButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.editButton:hover {
+  background: rgba(229, 9, 20, 0.2);
+  transform: scale(1.1);
+}
+
+.deleteButton:hover {
+  background: rgba(220, 53, 69, 0.2);
+  transform: scale(1.1);
+}
+
+.contentWrapper {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.content {
+  color: #e5e5e5;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  position: relative;
+  text-overflow: ellipsis;
+}
+
+.seeMoreButton {
+  background: none;
+  border: none;
+  color: #e50914;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+  text-decoration: underline;
+  font-style: italic;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.seeMoreButton:hover {
+  color: #f40612;
+  transform: translateX(5px);
+}
+
+.author {
+  color: #999;
+  font-style: italic;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #444;
+  background: #333;
+}
+
+.author::before {
+  display: none;
+}
+
+/* Modal de Edição */
+.editModalContent {
+  background: #1e1e1e;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.editModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editModalHeader h3 {
+  color: #e5e5e5;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.editModalBody {
+  padding: 2rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ratingSection,
+.contentSection {
+  margin-bottom: 1.5rem;
+}
+
+.ratingSection label,
+.contentSection label {
+  display: block;
+  color: #e5e5e5;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.ratingInput {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e5e5;
+  padding: 0.8rem;
+  border-radius: 6px;
+  width: 100px;
+  font-size: 1rem;
+}
+
+.ratingInput:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.contentTextarea {
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e5e5;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.contentTextarea:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.contentTextarea::placeholder {
+  color: #666;
+}
+
+.editModalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cancelButton,
+.saveButton {
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.cancelButton {
+  background: transparent;
+  color: #999;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cancelButton:hover:not(:disabled) {
+  border-color: #666;
+  color: #e5e5e5;
+}
+
+.saveButton {
+  background: #e50914;
+  color: white;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #f40612;
+  transform: translateY(-2px);
+}
+
+.saveButton:disabled,
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animação de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reviewCard {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.reviewCard:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.reviewCard:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .reviewsContainer {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .reviewCard {
+    padding: 1.2rem;
+  }
+
+  .rating {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .content {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .seeMoreButton {
+    font-size: 0.85rem;
+  }
+}
+
+/* Modal de Avaliação */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background: #1e1e1e;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  height: 80vh;
+  min-height: 500px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 2rem 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.modalRating {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e50914;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(229, 9, 20, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.modalRating span {
+  color: #e50914;
+}
+
+.modalDate {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.modalBody {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.modalContent > p {
+  color: #e5e5e5;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.modalBody p {
+  color: #e5e5e5;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.modalAuthor {
+  color: #999;
+  font-style: italic;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  background: #1e1e1e;
+}
+
+.modalAuthor::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: #333;
+  border-radius: 50%;
+  border: 2px solid #444;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.closeButton:hover {
+  background-color: rgba(229, 9, 20, 0.8);
+  transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilização da barra de rolagem */
+.modalBody::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 5px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 5px;
+  border: 2px solid #1e1e1e;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .reviewsContainer {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+
+  .reviewCard {
+    padding: 1.2rem;
+  }
+
+  .rating {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .content {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .seeMoreButton {
+    font-size: 0.85rem;
+  }
+
+  .modalOverlay {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    height: 85vh;
+    min-height: 400px;
+  }
+
+  .modalHeader {
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+  }
+
+  .modalBody {
+    padding: 1.5rem;
+  }
+
+  .modalAuthor {
+    padding: 1rem 1.5rem;
+  }
+
+  .modalRating {
+    font-size: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .modalBody p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .closeButton {
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+} 

@@ -1,0 +1,356 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.profileSection {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.imageSection {
+  flex: 0 0 auto;
+}
+
+.imageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.imageContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e50914;
+}
+
+.profileImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.imageLoading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.imageUploadLabel {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 150px;
+}
+
+.imageUploadLabel:hover:not(.disabled) {
+  background-color: #444;
+}
+
+.imageUploadLabel.disabled {
+  background-color: #666;
+  cursor: not-allowed;
+}
+
+.imageInput {
+  display: none;
+}
+
+.infoSection {
+  flex: 1;
+}
+
+.usernameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.input {
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #2c2c2c;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submitButton {
+  padding: 0.75rem;
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #f40612;
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  color: #ff4d4d;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(255, 77, 77, 0.1);
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease;
+}
+
+.success {
+  color: #4caf50;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 4px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .profileSection {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .infoSection {
+    width: 100%;
+  }
+
+  .imageUploadLabel {
+    max-width: none;
+    width: 200px;
+  }
+}
+
+.imageInfo {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  max-width: 100%;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+.imagePath {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.3rem;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+.noImage {
+  color: #e50914;
+  font-style: italic;
+}
+
+.dbImagePath {
+  display: block;
+  background-color: rgba(0, 150, 0, 0.2);
+  padding: 0.3rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  color: #4caf50;
+  font-size: 0.8rem;
+}
+
+.userInfo {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.userDetail {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.userDetail strong {
+  color: #aaa;
+  margin-right: 0.5rem;
+}
+
+.reloadButton {
+  margin-top: 10px;
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reloadButton:hover {
+  background-color: #2d3748;
+}
+
+.debugSection {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.debugSection h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-size: 16px;
+}
+
+.debugSection pre {
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 13px;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.passwordSection {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.passwordToggleButton {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.passwordToggleButton:hover:not(:disabled) {
+  background-color: #444;
+}
+
+.passwordToggleButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.passwordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.passwordFormButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancelButton {
+  padding: 0.75rem;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #666;
+}
+
+.cancelButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+} 
